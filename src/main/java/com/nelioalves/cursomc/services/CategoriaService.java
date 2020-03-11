@@ -34,4 +34,9 @@ public class CategoriaService {
 //		System.out.println("Categoria Service: " + obj.toString());
 		return repo.save(obj);
 	}
+
+	public void delete(Integer id) {
+		find(id);
+		repo.deleteById(id);
+	}
 }
