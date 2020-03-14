@@ -1,4 +1,4 @@
-package com.nelioalves.cursomc.services.exception;
+package com.nelioalves.cursomc.services.exceptions;
 
 public class DataIntegrityException extends RuntimeException {
 
