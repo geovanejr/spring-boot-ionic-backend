@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.nelioalves.cursomc.domain.Categoria;
+import com.nelioalves.cursomc.domain.Cliente;
 import com.nelioalves.cursomc.dto.CategoriaDTO;
 import com.nelioalves.cursomc.repositories.CategoriaRepository;
 import com.nelioalves.cursomc.services.exceptions.ObjectNotFoudException;
@@ -35,11 +36,14 @@ public class CategoriaService {
 	}
 	
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		
+		Categoria newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
 	}
-
+	
 	public void delete(Integer id) {
+		
 		find(id);
 		repo.deleteById(id);
 	}
@@ -59,4 +63,9 @@ public class CategoriaService {
 		
 		return new Categoria(objDTO.getId(), objDTO.getName());
 	}
+	
+	private void updateData(Categoria newObj, Categoria obj) {
+		
+		newObj.setName(obj.getName());
+ 	}
 }
