@@ -6,6 +6,7 @@ public class FieldMessage implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	private String fieldName;
 	private String message;
 	private String fileStatus;
 	
@@ -13,12 +14,27 @@ public class FieldMessage implements Serializable {
 		
 	}
 
-	public FieldMessage(String message, String fileStatus) {
+	public FieldMessage(String fieldName, String message) {
 		super();
+		this.fieldName = fieldName;
+		this.message = message;
+	}
+
+	public FieldMessage(String fieldName, String message, String fileStatus) {
+		super();
+		this.fieldName = fieldName;
 		this.message = message;
 		this.fileStatus = fileStatus;
 	}
 
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
+	
 	public String getMessage() {
 		return message;
 	}
@@ -34,5 +50,4 @@ public class FieldMessage implements Serializable {
 	public void setFileStatus(String fileStatus) {
 		this.fileStatus = fileStatus;
 	}
-
 }
