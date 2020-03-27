@@ -31,6 +31,9 @@ public class PedidoService {
 	private ProdutoService produtoService;
 	
 	@Autowired
+	private ClienteService clienteService;
+	
+	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
 	
 	public Pedido buscar(Integer id) {
@@ -45,6 +48,10 @@ public class PedidoService {
 		
 		obj.setId(null);
 		obj.setInstante(new Date());
+		
+		//buscando informação do cliente
+		
+		obj.setCliente(clienteService.find(obj.getCliente().getId()));
 		obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		obj.getPagamento().setPedido(obj);
 		
@@ -65,6 +72,8 @@ public class PedidoService {
 		}
 		
 		itemPedidoRepository.saveAll(obj.getItens());
+		
+		System.out.println(obj);
 		
 		return obj;
 	}
