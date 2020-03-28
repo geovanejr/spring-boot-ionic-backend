@@ -1,11 +1,8 @@
 package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.nelioalves.cursomc.utils.FuncoesComuns;
 
 @Entity
 public class Pedido implements Serializable {
@@ -120,14 +118,13 @@ public class Pedido implements Serializable {
 	@Override
 	public String toString() {
 		
-		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+		FuncoesComuns fc = new FuncoesComuns();
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("Pedido número: ");
 		builder.append(getId());
 		builder.append(", Instante: ");
-		builder.append(sdf.format(getInstante()));
+		builder.append(fc.formataData(getInstante()));
 		builder.append(", Cliente: ");
 		builder.append(getCliente().getNome());
 		builder.append(", Situação do Pagamento: ");
@@ -140,7 +137,7 @@ public class Pedido implements Serializable {
 		}
 		
 		builder.append("Valor Total: ");
-		builder.append(nf.format(getValorTotal()));
+		builder.append(fc.formataValor(getValorTotal()));
 		
 		return builder.toString();
 	}
