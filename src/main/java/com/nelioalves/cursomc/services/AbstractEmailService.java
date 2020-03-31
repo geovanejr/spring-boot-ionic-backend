@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 
 import com.nelioalves.cursomc.domain.Pedido;
-import com.nelioalves.cursomc.utils.FuncoesComuns;
 
 public abstract class AbstractEmailService implements EmailService {
 
@@ -24,6 +23,7 @@ public abstract class AbstractEmailService implements EmailService {
 	protected SimpleMailMessage prepareSimpleMailMessageFromPedido(Pedido obj) {
 		
 		SimpleMailMessage sm = new SimpleMailMessage();
+		System.out.println("Email: " + obj.getCliente().getEmail());
 		sm.setTo(obj.getCliente().getEmail());
 		sm.setFrom(sender);
 		sm.setSubject("Pedido Confirmado - nº: " + obj.getId());
