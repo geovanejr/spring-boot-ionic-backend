@@ -125,12 +125,12 @@ public class DbService {
 
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 
-		Cliente cli1 = new Cliente(null, "Maria Silva", "geovane.gjunior.curso@gmail.com", "12345678909", TipoCliente.PESSOAFISICA, pe.encode("586467"));
-		cli1.getTelefones().addAll(Arrays.asList("999468056", "982854499"));
+		Cliente cli1 = new Cliente(null, "Maria Silva", "geovane.gjunior.curso@gmail.com", "12345678909", TipoCliente.PESSOAFISICA, pe.encode("123123"));
+		cli1.getTelefones().addAll(Arrays.asList("991231234", "998745458"));
 
-		Cliente cli2 = new Cliente(null, "Geovane Soares", "geovane.gjunior@gmail.com", "12345678909", TipoCliente.PESSOAFISICA, pe.encode("586467"));
+		Cliente cli2 = new Cliente(null, "Geovane Soares", "geovane.gjunior@gmail.com", "12345678909", TipoCliente.PESSOAFISICA, pe.encode("123123"));
 		cli2.addPerfil(Perfil.ADMIN);
-		cli2.getTelefones().addAll(Arrays.asList("999468056", "982854499"));
+		cli2.getTelefones().addAll(Arrays.asList("995874587"));
 
 		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "05376100", cli1, c1);
 		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 5", "Centro", "02866040", cli1, c2);
