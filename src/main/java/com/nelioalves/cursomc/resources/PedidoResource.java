@@ -44,7 +44,7 @@ public class PedidoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@GetMapping
+	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Page<Pedido>> findByPage(
 			@RequestParam(value="page", defaultValue = "0") Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue = "24") Integer linesPerPage, 
